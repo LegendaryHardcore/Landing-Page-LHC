@@ -1,0 +1,117 @@
+<!-- Updated events.html (add class="events" to body, remove server IP section as specified, and update nav to include all links with Events active) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LHC - Legendary Hard-Core</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <!-- Font Awesome for social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body class="events">
+    <!-- Navigation Menu -->
+    <nav class="navbar">
+        <!-- Hamburger icon (visible on mobile) -->
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <!-- Side menu content (hidden by default on mobile, visible horizontal on desktop) -->
+        <div class="nav-sidebar" id="nav-sidebar">
+            <!-- Close button (X) inside menu for easy close on mobile -->
+            <div class="close-btn" id="close-btn">×</div>
+
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="rules.html">Rules</a></li>
+                <li><a href="modifications.html">Modifications</a></li>
+                <li><a href="https://wiki.legendaryhc.org/index.php?title=Main_Page" target="_blank">Wiki</a></li>
+                <li><a href="support.html" class="shop">Support</a></li>
+                <li><a href="vote.html">Vote</a></li>
+                <li><a href="https://bans.legendaryhc.org/" target="_blank">Bans</a></li>
+                <li><a href="respawn.html">Respawn</a></li>
+                <li><a href="events.html" class="active" >Events</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="left-side">
+            <h1>Legendary Hardcore Events</h1>
+            <p>The events server.</p>
+            <div class="social-links">
+                <a href="https://discord.gg/legendaryhc" target="_blank" title="Discord"><i class="fab fa-discord"></i></a>
+                <a href="https://www.youtube.com/@LegendaryHardcore" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+                <!-- <a href="https://x.com/yourhandle" target="_blank" title="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
+                <a href="https://reddit.com/r/yoursub" target="_blank" title="Reddit"><i class="fab fa-reddit-alien"></i></a>
+                <a href="https://instagram.com/yourhandle" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+            -->
+            </div>
+        </div>
+        <div class="right-side">
+            <div class="slideshow">
+                <img src="images/Events main.png" alt="Settlement" class="slide active" data-caption='Events Hub'>
+                <img src="images/events 4.PNG" alt="Settlement" class="slide">
+                <img src="images/events 5.PNG" alt="Settlement" class="slide">
+                <img src="images/events 6.PNG" alt="Settlement" class="slide">
+                <img src="images/events 7.PNG" alt="Settlement" class="slide">
+                <img src="images/events 8.PNG" alt="Settlement" class="slide">
+                <img src="images/events 9.PNG" alt="Settlement" class="slide">
+                <!-- Add more <img> as needed -->
+            </div>
+            <div class="caption"></div> 
+        </div>
+    </header>
+
+     <section class="about">
+        <div class="about-header">
+            <h2>ABOUT THE SERVER</h2>
+        </div>
+
+        
+        <div class="about-row row-1">
+            <div class="about-text">
+                <p>
+                    Welcome to the Events Server, your ultimate getaway from the intensity of our main and respawn servers! This is the perfect spot to enjoy a dynamic lineup of minigames and staff-hosted events. Our events evolve over time, featuring everything from classic challenges to original community ideas. 
+            </div>
+            <div class="about-image">
+                <img src="images/events 2.PNG" class="feature-img">
+            </div>
+        </div>
+
+        
+        <div class="about-row row-2">
+            <div class="about-image">
+                <img src="images/events 1.PNG" class="feature-img">
+            </div>
+            <div class="about-text">
+                <p>
+                    Getting to the Events Server is simple! From either the main server or the respawn server, just type /server events in the chat. Your location and inventory are automatically saved exactly as they were when you left the other server, ensuring a smooth transition back whenever you're ready. Deaths here are consequence free, they won't affect your hardcore lives or experience on other servers. Switching between servers won't activate any pearl stasis setups you have in place, keeping your strategies intact.
+                </p>
+            </div>
+        </div>
+
+
+        <div class="contact-content">
+            <p class="disclaimer">
+                Legendary HardCore is not an official Minecraft service. The server is not approved by or associated with Mojang or Microsoft.
+            </p>
+
+            <p class="credits">
+                Website by <a href="https://wiki.legendaryhc.org/index.php?title=BloodyOrphan" target="_blank">BloodyOrphan/Witness_Me</a>
+            </p>
+
+            <p class="copyright">
+                © 2026 mc.legendaryhc.org
+            </p>
+        </div>
+    </section>
+    <script src="script.js"></script>
+</body>
+
+</html>
