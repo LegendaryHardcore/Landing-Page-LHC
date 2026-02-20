@@ -1,0 +1,99 @@
+<!-- Updated index.html (add class="home" to body) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LHC - Legendary Hard-Core</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <!-- Font Awesome for social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body class="home">
+    <!-- Navigation Menu -->
+    <nav class="navbar">
+        <!-- Hamburger icon (visible on mobile) -->
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <!-- Side menu content (hidden by default on mobile, visible horizontal on desktop) -->
+        <div class="nav-sidebar" id="nav-sidebar">
+            <!-- Close button (X) inside menu for easy close on mobile -->
+            <div class="close-btn" id="close-btn">×</div>
+
+            <ul class="nav-menu">
+                <li><a href="index.html" class="active" >Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="rules.html">Rules</a></li>
+                <li><a href="modifications.html">Modifications</a></li>
+                <li><a href="https://wiki.legendaryhc.org/index.php?title=Main_Page" target="_blank">Wiki</a></li>
+                <li><a href="support.html" class="shop">Support</a></li>
+                <li><a href="vote.html">Vote</a></li>
+                <li><a href="https://bans.legendaryhc.org/" target="_blank">Bans</a></li>
+                <li><a href="respawn.html">Respawn</a></li>
+                <li><a href="events.html">Events</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="left-side">
+            <h1>Legendary Hardcore</h1>
+            <p>The oldest permanent deathban Minecraft server.</p>
+            <div class="social-links">
+                <a href="https://discord.gg/legendaryhc" target="_blank" title="Discord"><i class="fab fa-discord"></i></a>
+                <a href="https://www.youtube.com/@LegendaryHardcore" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+                <!-- <a href="https://x.com/yourhandle" target="_blank" title="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
+                <a href="https://reddit.com/r/yoursub" target="_blank" title="Reddit"><i class="fab fa-reddit-alien"></i></a>
+                <a href="https://instagram.com/yourhandle" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+            -->
+            </div>
+        </div>
+        <div class="right-side">
+            <div class="slideshow">
+                <img src="images/Spawn_town_jun25.png" alt="Settlement" class="slide active" data-caption='Spawn Town, March 2025'>
+                <img src="images/Sevenarkington.png" alt="Settlement" class="slide" data-caption='City of 7arkington, Nation Trifarix: Founded 15 October 2025'>
+                <img src="images/Porto_seguro.png" alt="Settlement" class="slide" data-caption='City of Porto Seguro: Founded 11 August 2025'>
+                <img src="images/Necropolis.png" alt="Settlement" class="slide" data-caption='City of Necropolis: Founded 15 August 2025'>
+                <!-- Add more <img> as needed -->
+            </div>
+            <div class="caption"></div> 
+        </div>
+    </header>
+
+    <!-- CTA at the bottom (updated with player count display) -->
+        <div class="about-cta">
+            <p>Join the legends today!</p>
+            <p>Currently <span id="player-count">Loading...</span> players online!</p> 
+            <div class="ip-copy">
+                <span>mc.legendaryhc.org</span>
+                <button onclick="copyIP()" title="Copy IP">Copy</button>
+            </div>
+        </div>
+
+         <section class="contact">
+        </div>
+
+        <div class="contact-content">
+            <p class="disclaimer">
+                Legendary HardCore is not an official Minecraft service. The server is not approved by or associated with Mojang or Microsoft.
+            </p>
+
+            <p class="credits">
+                Website by <a href="https://wiki.legendaryhc.org/index.php?title=BloodyOrphan" target="_blank">BloodyOrphan/Witness_Me</a>
+            </p>
+
+            <p class="copyright">
+                © 2026 mc.legendaryhc.org
+            </p>
+        </div>
+    </section>
+    <script src="script.js"></script>
+</body>
+
+</html>
+</html>
