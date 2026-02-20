@@ -1,0 +1,1421 @@
+
+
+/* Updated styles.css: Removed body background-images and moved page-specific backgrounds to .left-side selectors. 
+   This ensures the background photo is only on the left side (replacing the default 'lhc_logo_heads.png' per page) 
+   and prevents the home background from persisting on other pages. Replace the placeholder image paths with your actual file names/paths. */
+
+/* Smooth scrolling for section links */
+html {
+    scroll-behavior: smooth;
+}
+
+/* ====================== GLOBAL MOBILE FIXES ====================== */
+* {
+    box-sizing: border-box;           /* Prevents padding from making things overflow */
+}
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;               /* Kills horizontal scroll completely */
+    overflow-wrap: break-word;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Less aggressive word breaking: only break if absolutely necessary */
+p, li, h1, h2, h3, h4, .rule-card p, .vote-link, .about-text p {
+    word-break: normal;               /* Default: don't break words unless overflow */
+    overflow-wrap: break-word;        /* Break long words only if they overflow */
+    hyphens: none;                    /* Disable automatic hyphens */
+}
+
+/* Make sure ALL containers never exceed screen width */
+.about-row, .rules-highlights, .vote-table, .support-container, 
+.modifications-columns, .contact-content, .support-ranks {
+    max-width: 100%;
+    padding-left: 1.2rem;             /* Slight increase for breathing room */
+    padding-right: 1.2rem;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Press Start 2P', cursive;
+    color: #e0e0e0;
+    text-align: center;
+    padding-top: 60px; /* Space for fixed menu */
+    background: #0f0f0f; /* Fallback color only; no image here to avoid covering both sides */
+}
+
+
+@media (max-width: 1023px) {
+    body {
+        padding-top: 50px; /* Slightly less for mobile */
+    }
+}
+
+/* Navigation */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+/* Hamburger icon (visible on mobile) */
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    cursor: pointer;
+    padding: 20px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.hamburger span {
+    width: 35px;
+    height: 4px;
+    background: #fff;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* X shape when menu is open */
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(10px, 10px);
+}
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(9px, -9px);
+}
+
+/* Slide-out sidebar (for mobile) */
+.nav-sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 320px;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+    transform: translateX(100%);
+    transition: transform 0.4s ease;
+    z-index: 999;
+    overflow-y: auto; /* Enable vertical scrolling if menu is too tall */
+}
+
+.nav-sidebar.open {
+    transform: translateX(0);
+}
+
+/* Close button for mobile */
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 40px;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* Menu items */
+.nav-menu {
+    list-style: none;
+    padding: 4rem 2rem 2rem; /* Reduced top padding from 6rem for better visibility */
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Changed from center to start from top */
+}
+
+.nav-menu li {
+    margin: 2rem 0;
+}
+
+.nav-menu a {
+    color: #fff;
+    font-size: 1.8rem;
+    text-decoration: none;
+    transition: color 0.3s, background 0.3s;
+    display: block;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.nav-menu a:hover {
+    color: #4CAF50;
+    background: rgba(76, 175, 80, 0.15);
+}
+
+/* Active page highlight  */
+.nav-menu a.active {
+    background: #fff;
+    color: #000;
+}
+
+/* Shop/Support highlight  */
+.nav-menu a.shop {
+    background: #5bc0de;
+    color: #fff;
+}
+
+/* Active shop  */
+.nav-menu a.active.shop {
+    background: #31b0d5;
+    color: #fff;
+}
+
+/* Responsive: Horizontal menu on desktop */
+@media (min-width: 1024px) {
+    .hamburger {
+        display: none;
+    }
+
+    .nav-sidebar {
+        position: static;
+        transform: none;
+        background: none;
+        backdrop-filter: none;
+        height: auto;
+        width: 100%;
+        display: block;
+    }
+
+    .close-btn {
+        display: none;
+    }
+
+    .nav-menu {
+        flex-direction: row;
+        justify-content: center;
+        padding: 1rem 0;
+        height: auto;
+    }
+
+    .nav-menu li {
+        margin: 0 1rem;
+    }
+
+    .nav-menu a {
+        font-size: 1.2rem;
+        padding: 0.5rem 1rem;
+    }
+}
+
+/* On mobile, force hamburger even if screen is wide but tall */
+@media (max-width: 768px) {
+    .nav-menu {
+        flex-direction: column; /* Ensure vertical stack in sidebar */
+    }
+    .nav-menu a {
+        font-size: 1.6rem; /* Slightly smaller for mobile */
+    }
+}
+
+/* HERO SECTION (Home) */
+.hero {
+    display: flex;
+    height: 80vh;
+}
+
+.left-side {
+    width: 50%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+body.home .left-side {
+    background-image: url('images/lhc_logo_heads.png'); /* Home page left background (your original) */
+}
+
+body.respawn .left-side {
+    background-image: url('images/lhc_logo_respawn.png'); /* Replace with your actual respawn left background photo path */
+}
+
+body.events .left-side {
+    background-image: url('images/lhc_logo_events.png'); /* Replace with your actual events left background photo path */
+}
+
+.left-side::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.65);
+    z-index: 1;
+}
+
+.left-side > * {
+    position: relative;
+    z-index: 2;
+}
+
+.left-side h1 {
+    font-size: 4rem;
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.8);
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.left-side p {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.9);
+}
+
+.social-links {
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+    display: flex;
+    gap: 1.5rem;
+    justify-content: flex-end;
+}
+
+.social-links a {
+    color: white;
+    font-size: 2rem;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #4CAF50;
+}
+
+.social-links a i {
+    text-shadow: 0 0 6px rgba(0,0,0,0.7);
+}
+
+.right-side {
+    width: 50%;
+    position: relative;
+    overflow: hidden;
+}
+
+.slideshow {
+    height: 100%;
+    width: 100%;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+.caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 1rem;
+    font-size: 1rem;
+    text-align: left;
+}
+
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+        height: auto; /* Allow natural height on mobile */
+    }
+    .left-side, .right-side {
+        width: 100%;
+        height: 50vh; /* Half screen for each */
+        padding: 1rem; /* Reduce padding */
+    }
+    .left-side h1 {
+        font-size: 2.5rem; /* Smaller for mobile */
+    }
+    .left-side p {
+        font-size: 1rem;
+    }
+    .social-links {
+        position: static;
+        margin-top: 1rem;
+        justify-content: center;
+        gap: 1rem;
+    }
+    .social-links a {
+        font-size: 1.5rem;
+    }
+    .slide {
+        height: 100%;
+        object-fit: contain; /* Fit without cropping on mobile */
+    }
+    .caption {
+        font-size: 0.8rem;
+        padding: 0.5rem;
+    }
+}
+
+/* ABOUT SECTION */
+.about {
+    background: #111;
+    padding: 0;
+    color: #e0e0e0;
+}
+
+.about-header {
+    background: #000;
+    padding: 2rem 1rem;
+    text-align: center;
+}
+
+.about-header h2 {
+    margin: 0;
+    font-size: 2.8rem;
+    text-transform: uppercase;
+    letter-spacing: 6px;
+}
+
+.about-row {
+    display: flex;
+    align-items: stretch;
+    min-height: 60vh;
+    flex-wrap: wrap;
+}
+
+.about-row .about-text,
+.about-row .about-image {
+    flex: 1;
+    min-width: 300px;
+    padding: 3rem 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.about-row .about-text p {
+    font-size: 1.15rem;
+    line-height: 1.9;
+    margin: 0;
+}
+
+.about-row .about-image {
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.4s ease;
+}
+
+.about-row:hover .feature-img {
+    transform: scale(1.05);
+}
+
+.row-1,
+.row-3 {
+    background: #1a1a1a;
+}
+
+.row-2 {
+    background: #222222;
+}
+
+.about-cta {
+    background: linear-gradient(135deg, #4B0000, #8B0000, #B22222);
+    padding: 2.5rem;
+    text-align: center;
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(139, 0, 0, 0.4);
+}
+
+.about-cta p {
+    font-size: 2rem;
+    margin: 0 0 1.5rem;
+    text-shadow: 0 0 6px rgba(255, 69, 0, 0.5);
+}
+
+
+
+.ip-copy {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    font-size: 1.6rem;
+    gap: 1.5rem;
+    border: 2px solid #8B0000;
+    box-shadow: 0 0 10px rgba(139, 0, 0, 0.5);
+}
+
+.ip-copy span {
+    font-family: monospace;
+    color: #FF4500;
+    text-shadow: 0 0 5px #FF8C00;
+    font-weight: bold;
+}
+
+.ip-copy button {
+    background: #8B0000;
+    color: #fff;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 8px rgba(139, 0, 0, 0.6);
+}
+
+.ip-copy button:hover {
+    background: #B22222;
+    transform: scale(1.03);
+    box-shadow: 0 0 12px rgba(178, 34, 34, 0.8);
+}
+
+@media (max-width: 768px) {
+    .about-header h2 {
+        font-size: 2rem;
+    }
+    .about-row {
+        flex-direction: column;
+        min-height: auto;
+    }
+    .about-row .about-text,
+    .about-row .about-image {
+        padding: 1.5rem 2rem;
+        min-height: auto;
+    }
+    .about-row .about-text p {
+        font-size: 1rem;
+        line-height: 1.6; 
+    }
+    .about-cta {
+        padding: 2rem 1rem;
+    }
+    .about-cta p {
+        font-size: 1.5rem;
+    }
+    .ip-copy {
+        flex-direction: column;
+        gap: 1rem;
+        font-size: 1.4rem;
+        padding: 0.8rem 1.5rem;
+    }
+    .ip-copy button {
+        padding: 0.6rem 1rem;
+        font-size: 1rem;
+    }
+}
+
+/* Page-specific overrides for respawn.html */
+body.respawn .about-cta {
+    background: linear-gradient(135deg, #00004B, #00008B, #2222B2); /* Blue gradient instead of red */
+    box-shadow: 0 4px 12px rgba(0, 0, 139, 0.4); /* Blue-tinted shadow */
+}
+
+body.respawn .about-cta p {
+    text-shadow: 0 0 6px rgba(0, 69, 255, 0.5); /* Blue-tinted text shadow */
+}
+
+body.respawn .ip-copy {
+    background: rgba(0, 0, 0, 0.6);
+    border: 2px solid #00008B; /* Blue border */
+    box-shadow: 0 0 10px rgba(0, 0, 139, 0.5); /* Blue-tinted shadow */
+}
+
+body.respawn .ip-copy span {
+    color: #45AFFF; /* Lighter blue for IP text */
+    text-shadow: 0 0 5px #8CFFFF; /* Blue-tinted shadow */
+}
+
+body.respawn .ip-copy button {
+    background: #00008B; /* Dark blue button */
+    box-shadow: 0 0 8px rgba(0, 0, 139, 0.6); /* Blue-tinted shadow */
+}
+
+body.respawn .ip-copy button:hover {
+    background: #2222B2; /* Lighter blue on hover */
+    box-shadow: 0 0 12px rgba(34, 34, 178, 0.8); /* Blue-tinted hover shadow */
+}
+
+/* RULES SECTION */
+.rules {
+    background: #0f0f0f;
+    padding: 4rem 2rem;
+    color: #e0e0e0;
+}
+
+.rules-header {
+    background: #000;
+    padding: 2rem;
+    text-align: center;
+    border-bottom: 4px solid #00aaff;
+}
+
+.rules-header h2 {
+    margin: 0;
+    font-size: 3.2rem;
+    text-transform: uppercase;
+    letter-spacing: 8px;
+    color: #fff;
+}
+
+.rules-intro {
+    text-align: center;
+    max-width: 900px;
+    margin: 2rem auto;
+}
+
+.rules-intro p {
+    font-size: 1.4rem;
+    color: #ffcc00;
+    margin: 0;
+}
+
+.rules-highlights {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    flex-wrap: wrap;
+    margin: 4rem 0;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.rule-card {
+    background: #1a1a1a;
+    padding: 2rem;
+    width: 300px;
+    text-align: center;
+    border-radius: 8px;
+    border: 2px solid #333;
+    transition: transform 0.3s;
+}
+
+.rule-card:hover {
+    transform: translateY(-10px);
+    border-color: #00aaff;
+}
+
+.rule-icon {
+    font-size: 4rem;
+    color: #00aaff;
+    margin-bottom: 1rem;
+}
+
+.rule-card p {
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+.rules-details {
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 1.15rem;
+    line-height: 1.8;
+}
+
+.rules-details p {
+    margin-bottom: 1.5rem;
+}
+
+.rules-details a {
+    color: #ffcc00;
+    text-decoration: underline;
+}
+
+.rules-details a:hover {
+    color: #fff;
+}
+
+@media (max-width: 768px) {
+    .rules {
+        padding: 2rem 1rem;
+    }
+    .rules-header h2 {
+        font-size: 2.2rem;
+    }
+    .rules-intro p {
+        font-size: 1.2rem;
+    }
+    .rules-highlights {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    .rule-card {
+        width: 100%;
+        padding: 1.5rem;
+    }
+    .rule-icon {
+        font-size: 3rem;
+    }
+    .rule-card p {
+        font-size: 1rem;
+    }
+    .rules-details {
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+}
+
+/* SUPPORT SECTION - COMPACT & EVEN CARDS */
+.support {
+    background: #0a0a0a url('images/backgrounds/2025-10-23_02.30.45.png') center/cover no-repeat fixed;
+    padding: 6rem 2rem 12rem;
+    color: #fff;
+    position: relative;
+}
+
+.support::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.65);
+    z-index: 0;
+}
+
+.support > * {
+    position: relative;
+    z-index: 1;
+}
+
+.support-container {
+    display: flex;
+    max-width: 1400px;
+    margin: 0 auto;
+    gap: 6rem;
+    flex-wrap: wrap;
+}
+
+.support-text {
+    flex: 1;
+    min-width: 380px;
+}
+
+.support-text h2 {
+    font-size: 5rem;
+    text-transform: uppercase;
+    color: #ffd700;
+    margin-bottom: 0.5rem;
+    letter-spacing: 4px;
+}
+
+.support-text h3 {
+    font-size: 3rem;
+    color: #00bfff;
+    margin-bottom: 2rem;
+}
+
+.support-text p {
+    font-size: 1.3rem;
+    line-height: 1.9;
+    margin-bottom: 2rem;
+}
+
+.visit-store {
+    display: inline-block;
+    background: #ff4500;
+    color: white;
+    padding: 1.2rem 3rem;
+    font-size: 1.6rem;
+    text-decoration: none;
+    border-radius: 8px;
+    margin-top: 2rem;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.visit-store:hover {
+    background: #ff6347;
+}
+
+.support-ranks {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+.rank-card {
+    position: relative;
+    height: auto;                     /* Changed to auto to fit content and prevent cutoff */
+    min-height: 260px;                /* Minimum to match original size, but expandable */
+    perspective: 1000px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+.rank-card:hover {
+    transform: translateY(-8px); /* Keep this for desktop lift effect */
+}
+.rank-inner {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+.rank-card.flipped .rank-inner { /* Use .flipped class for rotation (triggered by JS) */
+    transform: rotateY(180deg);
+}
+.rank-front,
+.rank-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 16px;
+    padding: 1.5rem;
+    background: rgba(20, 20, 20, 0.92);
+    border: 3px solid #444;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.7);
+    overflow: hidden;
+}
+.rank-back {
+    transform: rotateY(180deg);
+    background: rgba(30, 30, 30, 0.98);
+    overflow-y: auto;
+    padding-top: 2rem;                /* Extra top padding to prevent cutoff */
+}
+.rank-heart {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 1rem;
+}
+.rank-card h4 {
+    font-size: 2.4rem;
+    margin: 0.5rem 0;
+    color: #ffd700;
+}
+.price {
+    font-size: 1.6rem;
+    color: #00ff9d;
+    font-weight: bold;
+    text-align: center;
+}
+.rank-back ul {
+    list-style: none;
+    padding: 0 1.5rem;
+    margin: 0;                        /* Reset margin to avoid extra top space */
+    text-align: left;
+    font-size: 1rem;
+    line-height: 1.7;
+}
+.rank-back li {
+    margin-bottom: 0.7rem;
+    position: relative;
+    padding-left: 1.6rem;
+}
+.rank-back li:before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: #ffd700;
+}
+.gold .rank-front { border-color: #ffd700; }
+.diamond .rank-front { border-color: #00bfff; }
+.hardcore .rank-front { border-color: #ff4500; }
+@media (max-width: 768px) {
+    .support {
+        padding: 4rem 1rem 8rem;
+    }
+    .support-container {
+        flex-direction: column;
+        gap: 3rem;
+    }
+    .support-text h2 {
+        font-size: 3.5rem;
+    }
+    .support-text h3 {
+        font-size: 2.2rem;
+    }
+    .support-text p {
+        font-size: 1.1rem;
+    }
+    .visit-store {
+        padding: 1rem 2rem;
+        font-size: 1.4rem;
+    }
+    .support-ranks {
+        gap: 3rem;
+    }
+    .rank-card {
+        height: auto; /* Allow natural height on mobile */
+    }
+    .rank-inner {
+        transform: none !important; /* Disable flip on mobile for simplicity; show front only or tap to flip if needed */
+    }
+    .rank-back {
+        display: none; /* Optional: Show only front on mobile, or add JS tap to toggle */
+    }
+    .rank-heart {
+        width: 80px;
+        height: 80px;
+    }
+    .rank-card h4 {
+        font-size: 2rem;
+    }
+    .price {
+        font-size: 1.4rem;
+    }
+}
+
+/* VOTE SECTION */
+.vote {
+    background: #0a0a0a url('images/vote-bg.png') center/cover no-repeat fixed;
+    padding: 6rem 2rem 10rem;
+    color: #e0e0e0;
+    position: relative;
+}
+
+.vote::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 0;
+}
+
+.vote > * {
+    position: relative;
+    z-index: 1;
+}
+
+.vote-header {
+    background: #000;
+    padding: 2rem;
+    text-align: center;
+    border-bottom: 4px solid #00aaff;
+}
+
+.vote-header h2 {
+    margin: 0;
+    font-size: 3.5rem;
+    text-transform: uppercase;
+    letter-spacing: 8px;
+    color: #fff;
+}
+
+.vote-intro {
+    max-width: 1000px;
+    margin: 3rem auto;
+    text-align: center;
+}
+
+.vote-intro p {
+    font-size: 1.3rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+.perks-list {
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0;
+    font-size: 1.2rem;
+}
+
+.perks-list li {
+    margin-bottom: 1rem;
+    color: #ffcc00;
+}
+
+.streak-note {
+    font-size: 1.1rem;
+    color: #aaa;
+    font-style: italic;
+}
+
+.vote-table {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 4rem auto;
+}
+
+.vote-column {
+    flex: 1;
+    min-width: 300px;
+    background: rgba(30, 30, 30, 0.8);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 2px solid #333;
+}
+
+.vote-column h3 {
+    font-size: 2rem;
+    color: #00aaff;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.vote-link {
+    display: block;
+    background: #222;
+    color: #fff;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background 0.3s;
+}
+
+.vote-link:hover {
+    background: #00aaff;
+}
+
+.streak-tier,
+.milestone-tier {
+    background: #1a1a1a;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+.vote-note {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #aaa;
+    margin-top: 3rem;
+}
+
+@media (max-width: 768px) {
+    .vote {
+        padding: 4rem 1rem 6rem;
+    }
+    .vote-header h2 {
+        font-size: 2.5rem;
+    }
+    .vote-intro p {
+        font-size: 1.1rem;
+    }
+    .perks-list {
+        font-size: 1rem;
+    }
+    .streak-note {
+        font-size: 1rem;
+    }
+    .vote-table {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    .vote-column {
+        min-width: 100%;
+        padding: 1.5rem;
+    }
+    .vote-column h3 {
+        font-size: 1.8rem;
+    }
+    .vote-link {
+        padding: 0.8rem;
+        font-size: 1rem;
+    }
+}
+
+/* CONTACT SECTION */
+.contact {
+    background: #0a0a0a;
+    padding: 6rem 2rem 8rem;
+    color: #e0e0e0;
+    text-align: center;
+}
+
+.contact-header {
+    background: #000;
+    padding: 2rem;
+    margin-bottom: 3rem;
+}
+
+.contact-header h2 {
+    margin: 0;
+    font-size: 3.5rem;
+    text-transform: uppercase;
+    letter-spacing: 8px;
+    color: #fff;
+}
+
+.contact-content {
+    max-width: 900px;
+    margin: 0 auto;
+    font-size: 1.3rem;
+    line-height: 1.8;
+}
+
+.contact-content p {
+    margin-bottom: 2rem;
+}
+
+.contact-content a {
+    color: #00bfff;
+    text-decoration: underline;
+}
+
+.contact-content a:hover {
+    color: #fff;
+}
+
+.disclaimer {
+    font-size: 1.1rem;
+    color: #aaa;
+    font-style: italic;
+    margin: 4rem 0 2rem;
+}
+
+.credits {
+    font-size: 1.2rem;
+    margin: 2rem 0;
+}
+
+.copyright {
+    font-size: 1rem;
+    color: #777;
+    margin-top: 3rem;
+}
+
+@media (max-width: 768px) {
+    .contact {
+        padding: 4rem 1rem 6rem;
+    }
+    .contact-header {
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+    }
+    .contact-header h2 {
+        font-size: 2.5rem;
+    }
+    .contact-content {
+        font-size: 1.1rem;
+        padding: 0 1rem;
+    }
+    .disclaimer {
+        margin: 2rem 0 1rem;
+        font-size: 1rem;
+    }
+    .credits {
+        font-size: 1.1rem;
+    }
+    .copyright {
+        font-size: 0.9rem;
+    }
+    .ip-copy { 
+        flex-direction: column;
+    }
+}
+
+/* MODIFICATIONS SECTION (from previous) */
+.modifications {
+    background: #0a0a0a url('images/backgrounds/torihen castle.PNG') center/cover no-repeat fixed; 
+    padding: 6rem 2rem 10rem; /* Increased padding for better spacing with background */
+    color: #e0e0e0;
+    position: relative;
+}
+
+.modifications::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7); /* Dark overlay for readability */
+    z-index: 0;
+}
+
+.modifications > * {
+    position: relative;
+    z-index: 1;
+}
+
+.modifications-header {
+    background: #000;
+    padding: 2rem;
+    text-align: center;
+    border-bottom: 4px solid #00aaff;
+}
+
+.modifications-header h2 {
+    margin: 0;
+    font-size: 3.2rem;
+    text-transform: uppercase;
+    letter-spacing: 8px;
+    color: #fff;
+}
+
+.modifications-intro {
+    text-align: center;
+    max-width: 900px;
+    margin: 2rem auto;
+}
+
+.modifications-intro p {
+    font-size: 1.4rem;
+    color: #ffcc00;
+    margin: 0;
+}
+
+.modifications-columns {
+    display: flex;
+    justify-content: space-between; /* Pushes columns to far left and far right */
+    max-width: 1200px; /* Wider container for larger middle gap */
+    margin: 4rem auto;
+    gap: 4rem; /* Minimum gap, but space-between will maximize it */
+}
+
+.modifications-list {
+    list-style: none;
+    padding: 0;
+    font-size: 1.15rem;
+    line-height: 1.8;
+    text-align: left;
+    flex: 1; /* Allows each column to take equal space if needed, but with space-between */
+    max-width: 45%; /* Limits width for larger center gap */
+}
+
+@media (max-width: 768px) {
+    .modifications {
+        padding: 4rem 1rem 6rem;
+    }
+    .modifications-header h2 {
+        font-size: 2.5rem;
+    }
+    .modifications-intro p {
+        font-size: 1.2rem;
+        padding: 0 1rem;
+    }
+    .modifications-columns {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    .modifications-list {
+        max-width: 100%;
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+    .modifications-list li {
+        margin-bottom: 1rem;
+    }
+}
+
+.modifications-list li {
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-left: 2rem;
+}
+
+.modifications-list li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #00aaff;
+    font-size: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .modifications-header h2 {
+        font-size: 2.5rem;
+    }
+    .modifications-list {
+        text-align: center;
+        padding: 0 1rem;
+    }
+    .modifications-list li {
+        padding-left: 0;
+        text-align: left;
+    }
+    .modifications-list li::before {
+        left: -1rem;
+    }
+}
+
+/* ====================== MOBILE STYLES (768px and below) ====================== */
+@media (max-width: 768px) {
+    /* Hero section: Ensure full width and proper stacking */
+    .hero {
+        flex-direction: column;           /* Stack left over right */
+        align-items: center;              /* Center everything horizontally */
+        padding: 0;                       /* Remove extra padding */
+    }
+
+    .left-side, .right-side {
+        width: 100% !important;           /* Full width for both sides */
+        padding: 1rem 0;                  /* Vertical spacing */
+    }
+
+    /* Slideshow: Make it full-width with fixed height for visibility */
+    .slideshow {
+        position: relative;
+        width: 100%;
+        height: 40vh;                     /* Fixed height to prevent collapse; adjust if needed */
+        overflow: hidden;                 /* Prevent overflow */
+    }
+
+    .slide {
+        position: absolute;               /* Overlay slides for rotation */
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;                       /* Hide by default with opacity (allows preloading) */
+        transition: opacity 1s ease-in-out;
+        object-fit: cover;                /* Fill the container without distortion */
+    }
+
+    .slide.active {
+        opacity: 1;                       /* Show the active slide */
+    }
+
+    .slideshow img {
+        width: 100% !important;
+        height: 100% !important;          /* Fill the slideshow container */
+    }
+
+    /* Caption: Center and style for mobile */
+    .caption {
+        text-align: center;
+        font-size: 0.8rem;
+        margin-top: 0.5rem;
+    }
+
+    /* CTA below hero: Adjust for mobile */
+    .about-cta {
+        text-align: center;
+        padding: 1rem;
+    }
+
+    /* Support page: Fix rank card spacing and full visibility */
+    .support-ranks {
+        flex-direction: column;           /* Ensure vertical stack */
+        gap: 2.5rem;                      /* Space between cards */
+        align-items: center;              /* Center cards horizontally */
+    }
+
+    .rank-card {
+        width: 90% !important;            /* Slightly narrower for centering/margins */
+        min-height: 180px;                /* Minimum height to show full content like desktop */
+        height: auto;                     /* Allow expansion if needed */
+        margin-bottom: 2rem;              /* Extra bottom margin for spacing */
+        padding: 1rem;                    /* Internal padding for content breathing room */
+    }
+
+    .rank-inner {
+        height: 100%;                     /* Full height for flip container */
+    }
+
+    .rank-front, .rank-back {
+        height: 100%;                     /* Ensure both sides fill the card */
+        padding: 1.5rem;                  /* More padding to mimic desktop spacing */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .rank-heart {
+        width: 60px;                      /* Scale down heart images for mobile fit */
+        height: auto;
+        margin-bottom: 1rem;              /* Space below heart */
+    }
+
+    .rank-front h4 {
+        font-size: 1.2rem;                /* Slightly larger title for visibility */
+        margin-bottom: 0.5rem;
+    }
+
+    .rank-front .price {
+        font-size: 0.9rem;                /* Adjust price text size */
+    }
+
+    .rank-back ul {
+        font-size: 0.75rem;               /* Perk list size for readability */
+        text-align: center;
+    }
+
+    /* Other mobile styles (keep your existing ones) */
+    body {
+        font-size: 0.65rem;
+        padding-top: 50px;
+    }
+
+    h1, h2, h3, h4 {
+        font-size: 0.95rem !important;
+        line-height: 1.4;
+        overflow-wrap: break-word;
+        text-align: center;
+    }
+
+    p, li, .rule-card p, .vote-intro p, .modifications-list li, .support-text p {
+        font-size: 0.70rem;
+        line-height: 1.6;
+        padding: 0 1.2rem;
+        text-align: center;
+    }
+
+    /* Rule cards on rules.html */
+    .rule-card {
+        width: 100% !important;
+        padding: 1.2rem 1rem;
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+
+    /* Vote links */
+    .vote-link {
+        font-size: 0.75rem;
+        padding: 0.9rem 0.8rem;
+        overflow-wrap: break-word;
+    }
+
+    /* Modifications columns */
+    .modifications-columns {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    /* Remove any leftover padding that could push things out */
+    .about-row .about-text,
+    .about-row .about-image,
+    .rules-details,
+    .vote-intro,
+    .modifications-intro {
+        padding: 1rem 1rem;
+    }
+}
+
+
