@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rules - Legendary Hard-Core</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <!-- Font Awesome for social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Menu (same on all pages, with active class on current) -->
+    <nav class="navbar">
+        <!-- Hamburger icon (visible on mobile) -->
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <!-- Side menu content (hidden by default on mobile, visible horizontal on desktop) -->
+        <div class="nav-sidebar" id="nav-sidebar">
+            <!-- Close button (X) inside menu for easy close on mobile -->
+            <div class="close-btn" id="close-btn">×</div>
+
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="rules.html" class="active" >Rules</a></li>
+                <li><a href="modifications.html">Modifications</a></li>
+                <li><a href="https://wiki.legendaryhc.org/index.php?title=Main_Page" target="_blank">Wiki</a></li>
+                <li><a href="support.html" class="shop">Support</a></li>
+                <li><a href="vote.html">Vote</a></li>
+                <li><a href="https://bans.legendaryhc.org/" target="_blank">Bans</a></li>
+                <li><a href="respawn.html">Respawn</a></li>
+                <li><a href="events.html">Events</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="rules">
+        <div class="rules-header">
+            <h2>SERVER RULES</h2>
+        </div>
+
+        <div class="rules-intro">
+            <p>
+                As we are a vanilla server, we have rules in place to ensure everyone is playing the game as intended
+            </p>
+        </div>
+
+        <div class="rules-highlights">
+            <div class="rule-card">
+                <i class="fas fa-clock rule-icon"></i>
+                <p>No lag machines or deliberate overuse of server resources</p>
+            </div>
+            <div class="rule-card">
+                <i class="fas fa-code rule-icon"></i>
+                <p>No use of hacked clients, external programs, X-Ray texturepacks or radar</p>
+            </div>
+            <div class="rule-card">
+                <i class="fas fa-bug rule-icon"></i>
+                <p>No use of exploits or duping (except rail/carpet/ gravity/TNT)</p>
+            </div>
+        </div>
+
+        <div class="rules-details">
+            <p>
+                For more information, see our <a href="https://wiki.legendaryhc.org/index.php?title=Rules" target="_blank">rules page</a>.
+            </p>
+            <p>
+                If evidence is found or presented of a player breaking these rules, bans can be issued. To make an appeal, make a ticket on the discord.
+            </p>
+        </div>
+    </section>
+
+    <!-- Merged Contact.html to the bottom -->
+    <section class="contact" id="contact">
+        <div class="contact-header">
+            <h2>CONTACT US</h2>
+        </div>
+
+        <div class="contact-content">
+            <p>
+                The best way to get support for server issues is to join our <a href="https://discord.gg/legendaryhc" target="_blank">Discord</a> 
+                and create a support ticket after reading the #support-readme channel.
+            </p>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
