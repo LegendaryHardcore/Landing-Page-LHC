@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifications - Legendary Hard-Core</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <!-- Font Awesome for social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Menu  -->
+    <nav class="navbar">
+        <!-- Hamburger icon (visible on mobile) -->
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <!-- Side menu content (hidden by default on mobile, visible horizontal on desktop) -->
+        <div class="nav-sidebar" id="nav-sidebar">
+            <!-- Close button (X) inside menu for easy close on mobile -->
+            <div class="close-btn" id="close-btn">×</div>
+
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="rules.html">Rules</a></li>
+                <li><a href="modifications.html" class="active" >Modifications</a></li>
+                <li><a href="https://wiki.legendaryhc.org/index.php?title=Main_Page" target="_blank">Wiki</a></li>
+                <li><a href="support.html" class="shop">Support</a></li>
+                <li><a href="vote.html">Vote</a></li>
+                <li><a href="https://bans.legendaryhc.org/" target="_blank">Bans</a></li>
+                <li><a href="respawn.html">Respawn</a></li>
+                <li><a href="events.html">Events</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="modifications">
+    <div class="modifications-header"> 
+        <h2>SERVER MODIFICATIONS</h2>
+    </div>
+
+    <div class="modifications-intro"> 
+        <p>
+            The server is mostly vanilla. There are no land claims, no economy plugins and no factions plugins, but we have made some additions that make the server unique:
+        </p>
+    </div>
+
+    <div class="modifications-spacer"></div> 
+
+    <div class="modifications-columns">
+        <ul class="modifications-list">
+            <li>When a player dies their head is placed at the location of their death</li>
+            <li>By holding a dead player’s head and running the command /deadenderchest, a living player can access the contents of a dead player’s ender chest. This can only be executed once.</li>
+            <li>Phantoms can be toggled once a player has got the ‘two birds, one arrow’ advancement by running /phantoms</li>
+            <li>Withers and lava casting is disabled in the spawn region between -3000, -3000 and 3000, 3000</li>
+        </ul>
+        <ul class="modifications-list">
+            <li>When a player enters the end they are spawned at a random location on the main end island rather than the end platform.</li>
+            <li>An obsidian block can be ‘tamed’ by looking at it and running /petobby. A ‘pet obby’ will transform in to crying obsidian when the player is offline, returning to obsidian when the player returns. This can be used to create ender pearl stasis chambers.</li>
+            <li>Each player spawns with a journal that can only be edited by them and is automatically signed on death. The journal is indestructible and will never despawn.</li>
+        </ul>
+    </div>
+
+    <div class="background-caption">Luminara Castle, built by Torihen 12 October 2025</div> 
+    
+</section>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
