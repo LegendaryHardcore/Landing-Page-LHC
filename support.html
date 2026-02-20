@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support - Legendary Hard-Core</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <!-- Font Awesome for social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Menu (same on all pages, with active class on current) -->
+    <nav class="navbar">
+        <!-- Hamburger icon (visible on mobile) -->
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <!-- Side menu content (hidden by default on mobile, visible horizontal on desktop) -->
+        <div class="nav-sidebar" id="nav-sidebar">
+            <!-- Close button (X) inside menu for easy close on mobile -->
+            <div class="close-btn" id="close-btn">×</div>
+
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="rules.html">Rules</a></li>
+                <li><a href="modifications.html">Modifications</a></li>
+                <li><a href="https://wiki.legendaryhc.org/index.php?title=Main_Page" target="_blank">Wiki</a></li>
+                <li><a href="support.html" class="active"  class="shop">Support</a></li>
+                <li><a href="vote.html">Vote</a></li>
+                <li><a href="https://bans.legendaryhc.org/" target="_blank">Bans</a></li>
+                <li><a href="respawn.html">Respawn</a></li>
+                <li><a href="events.html">Events</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="support">
+        <div class="support-container">
+            <!-- Left side: Text description -->
+            <div class="support-text">
+                <h2>SUPPORT</h2>
+                <h3>LEGENDARY HARDCORE</h3>
+                <p>
+                    You can purchase ranks to receive cosmetic perks as a reward for supporting the server. All of our rewards are purely cosmetic and offer no game-changing advantages.
+                </p>
+               
+                <p>
+                    For pure donations, check out our 
+                    <a href="https://buymeacoffee.com/hardcore" target="_blank">Buy Me a Coffee page</a>.
+                </p>
+                <p>More details on perks for each rank are available on our webstore below.</p>
+
+                <a href="https://legendary-hardcore.tebex.io/" target="_blank" class="visit-store">
+                    <span>🛒 VISIT OUR WEBSITE</span>
+                </a>
+            </div>
+
+            <!-- Right side: Rank cards with hover flip -->
+            <div class="support-ranks">
+                <div class="rank-card gold">
+                    <div class="rank-inner">
+                        <div class="rank-front">
+                            <img src="images/ranks/Gold_rank.png" alt="Gold Heart Badge" class="rank-heart">
+                            <h4>Gold</h4>
+                            <span class="price">$3.99 Monthly Subscription</span>
+                        </div>
+                        <div class="rank-back">
+                            <ul>
+                                <li>Gold Supporter Badge</li>
+                                <li>Priority queue</li>
+                                <li>Custom death sounds</li>
+                                <li>Basic color codes in nickname</li>
+                                <!-- Future perks? -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rank-card diamond">
+                    <div class="rank-inner">
+                        <div class="rank-front">
+                            <img src="images/ranks/Diamond_rank.png" alt="Diamond Heart Badge" class="rank-heart">
+                            <h4>Diamond</h4>
+                            <span class="price">$49.99 One-time Payment</span>
+                        </div>
+                        <div class="rank-back">
+                            <ul>
+                                <li>All Gold perks included</li>
+                                <li>Diamond Supporter Badge</li>
+                                <li>Custom hex colors in nick</li>
+                                <li>Use [item] to show held item in chat</li>
+                                <li>Unlock full chat formatting (bold, italic, etc.)</li>
+                                <!-- Future perks? -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rank-card hardcore">
+                    <div class="rank-inner">
+                        <div class="rank-front">
+                            <img src="images/ranks/Hardcore_rank.png" alt="Hardcore Heart Badge" class="rank-heart">
+                            <h4>Hardcore</h4>
+                            <span class="price">$99.99 One-time Payment</span>
+                        </div>
+                        <div class="rank-back">
+                            <ul>
+                                <li>All Diamond perks</li>
+                                <li>Legendary exclusive badge</li>
+                                <li>Custom lore/flavor text on items</li>
+                                <li>Use /hat to wear blocks on head</li>
+                                <li>Future exclusive features first</li>
+                                <!-- Future perks? -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
